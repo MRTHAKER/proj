@@ -58,7 +58,9 @@ String ss=sb.nextLine();
 Scanner sca = new Scanner(System.in);
 System.out.println("Enter filename..");
 String sbb=sca.nextLine();
-upload up =new upload(ss,sbb);
+String ext=sbb.substring(sbb.indexOf("."));
+System.out.println(ext);
+upload up =new upload(ss,sbb,ext);
 System.out.println("Here is link of your uploaded file: "+up.getlink());
 }
 if(s.equals("2")){
