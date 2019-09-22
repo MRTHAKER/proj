@@ -1,11 +1,44 @@
 import java.util.Scanner;
 import java.io.*;
 import java.util.ArrayList;
+import java.util.*;
 class start{
+public static void del(){
+ArrayList<String> delfile=new ArrayList<String>();
+try{
+File df = new File("/home/mrhacker5476/proj/files.txt");
+BufferedReader b = new BufferedReader(new FileReader(df));
+String del;
+while ((del = b.readLine()) != null){
+   delfile.add(del);
+}
+delete d=new delete();
+File hy=new File("/home/mrhacker5476/hyper");
+d.remove(hy);
+for(String temp:delfile){
+File x=new File(temp);
+kick(x);
+}
+}
+catch(Exception e){
+System.out.println(e.toString());
+}
+}
+public static void kick(File x){
+long diff = new Date().getTime() - x.lastModified();
+if(diff > 1 * 24 * 60 * 60 * 1000){
+System.out.println("FILE NAME "+x.getAbsolutePath()+" WILL BE DELETED TOMORROW");
+}
+if(diff > 7 * 24 * 60 * 60 * 1000){
+    x.delete();
+}
+}
 public static void main(String args[]){
 System.out.println("Welcome to Hyper Hostings");
+Date d1 = new Date();
+System.out.println("Current date is: "+d1);
 Scanner reg=new Scanner(System.in);
-System.out.println("For new regisration press 8, If already registered press any key.");
+System.out.println("For new regisration press 8, If already registered then press any key.");
 String n=reg.nextLine();
 if(n.equals("8"))
 {
@@ -45,6 +78,7 @@ catch(Exception e){
 System.out.println(e.toString());
 }
 if(userfile.contains(user) && userfile.contains(pass)){
+del();
 System.out.println("Choose operation from the menu below");
 System.out.println("1.Upload");
 System.out.println("2.Download");
