@@ -1,14 +1,50 @@
 import java.util.Scanner;
+import java.io.*;
+import java.util.ArrayList;
 class start{
 public static void main(String args[]){
 System.out.println("Welcome to Hyper Hostings");
+Scanner reg=new Scanner(System.in);
+System.out.println("For new regisration press 8, If already registered press any key.");
+String n=reg.nextLine();
+if(n.equals("8"))
+{
+Scanner name=new Scanner(System.in);
+System.out.println("Enter name: ");
+String nm=reg.nextLine();
+Scanner email=new Scanner(System.in);
+System.out.println("Enter email id: ");
+String mail=reg.nextLine();
+Scanner pass=new Scanner(System.in);
+System.out.println("Enter password");
+String pa=reg.nextLine();
+user u=new user(nm,mail,pa);
+u.addUser();
+System.out.println("You are registered, Use your email id for login with your password");
+}
 Scanner suser = new Scanner(System.in);
-System.out.println("Enter Username");
+System.out.println("Enter Email");
 String user=suser.nextLine();
 Scanner spass = new Scanner(System.in);
 System.out.println("Enter password");
 String pass=spass.nextLine();
-if(user.equals("mahek") && pass.equals("5476")){
+if(user.equals("") || pass.equals(""))
+{
+user=" ";pass=" ";
+}
+ArrayList<String> userfile=new ArrayList<String>();
+try{
+File u = new File("/home/mrhacker5476/proj/users.txt");
+BufferedReader br = new BufferedReader(new FileReader(u));
+String st;
+while ((st = br.readLine()) != null){
+   userfile.add(st);
+}
+}
+catch(Exception e){
+System.out.println(e.toString());
+}
+if(userfile.contains(user) && userfile.contains(pass)){
 System.out.println("Choose operation from the menu below");
 System.out.println("1.Upload");
 System.out.println("2.Download");
