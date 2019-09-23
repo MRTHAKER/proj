@@ -1,20 +1,18 @@
 import java.util.Scanner;
 import java.io.*;
-import java.util.ArrayList;
 import java.util.*;
 class start{
 public static void del(){
 ArrayList<String> delfile=new ArrayList<String>();
 try{
+delete d=new delete();
+d.readDir();
 File df = new File("/home/mrhacker5476/proj/files.txt");
 BufferedReader b = new BufferedReader(new FileReader(df));
 String del;
 while ((del = b.readLine()) != null){
    delfile.add(del);
 }
-delete d=new delete();
-File hy=new File("/home/mrhacker5476/hyper");
-d.remove(hy);
 for(String temp:delfile){
 File x=new File(temp);
 kick(x);
@@ -26,7 +24,7 @@ System.out.println(e.toString());
 }
 public static void kick(File x){
 long diff = new Date().getTime() - x.lastModified();
-if(diff > 1 * 24 * 60 * 60 * 1000){
+if(diff > 6 * 24 * 60 * 60 * 1000){
 System.out.println("FILE NAME "+x.getAbsolutePath()+" WILL BE DELETED TOMORROW");
 }
 if(diff > 7 * 24 * 60 * 60 * 1000){
