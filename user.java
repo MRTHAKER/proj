@@ -1,3 +1,4 @@
+package hyperhosting;
 import java.io.*;
 class user{
 String name;
